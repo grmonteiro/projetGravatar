@@ -20,7 +20,7 @@ class CreateAvatarsTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->string('email')->unique();
-            $table->binary('img');
+            $table->string('img');
             $table->timestamps();
         });
     }
