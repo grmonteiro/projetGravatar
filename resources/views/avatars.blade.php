@@ -1,75 +1,190 @@
 @extends('layouts.app') 
 @section('content')
 
-<h1>VOS AVATARS</h1>
+
 
 <div class="container">
+    
+    <h1 class="text-center">YOUR AVATARS</h1><br>
+    
+    
+    
     <div class="card-deck">
         <div class="card">
-            <img class="card-img-top" src="https://goo.gl/images/1btpkC" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset("/img/ChateauBayonne.jpg") }}" alt="Card image cap">
             
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 
                 <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                  email
                 </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            
+            <!-- Button trigger modal -->
+            
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#edit">
+                      Edit
+                    </button> 
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete">
+                      <img src="{{ asset("/img/garbage.png") }}"></img>
+                    </button>
+                </div>
             </div>
         </div>
       
         <div class="card">
-            <img class="card-img-top" src="https://goo.gl/images/1btpkC" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset("/img/ChateauBayonne.jpg") }}" alt="Card image cap">
             
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 
                 <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                  email
                 </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+            
+            <!-- Button trigger modal -->
+            
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#edit">
+                      Edit
+                    </button> 
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete">
+                      <img src="{{ asset("/img/garbage.png") }}"></img>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="card">
+            <img class="card-img-top" src="{{ asset("/img/ChateauBayonne.jpg") }}" alt="Card image cap">
+            
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                
+                <p class="card-text">
+                  email
+                </p>
+            </div>
+            
+            <!-- Button trigger modal -->
+            
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#edit">
+                      Edit
+                    </button> 
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete">
+                      <img src="{{ asset("/img/garbage.png") }}"></img>
+                    </button>
+                </div>
             </div>
         </div>
         
         <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <img class="card-img-top" src="{{ asset("/img/ChateauBayonne.jpg") }}" alt="Card image cap">
             
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 
                 <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                  email
                 </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
-        </div>
-        
-        <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
             
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        
-        <div class="card">
-            <img class="card-img-top" src="..." alt="Card image cap">
+            <!-- Button trigger modal -->
             
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#edit">
+                      Edit
+                    </button> 
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete">
+                      <img src="{{ asset("/img/garbage.png") }}"></img>
+                    </button>
+                </div>
             </div>
         </div>
       
     </div>
 </div>  
+
+
+
+
+            
+            
+            
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title " id="editTitle">Edit your avatar</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4"><img class="card-img-top" src="{{ asset("/img/ChateauBayonne.jpg") }}" alt="Card image cap"></div>
+                    <div class="col-8">
+                        <form>
+                          <div class="form-group">
+                             <label for="Title">Title</label>
+                            <input type="text" class="form-control" id="Title" placeholder="Enter title"><br>
+                            <label for="Email">Email address</label>
+                            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Private" value="option1">
+                              <label class="form-check-label" for="Private">Private</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="Pro" value="option2">
+                              <label class="form-check-label" for="Pro">Pro</label>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-success">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+            
+<!-- Modal -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="deleteTitle">Are you sure?</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
