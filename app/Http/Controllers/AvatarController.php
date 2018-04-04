@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Avatar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\User;
 
 class AvatarController extends Controller
 {
@@ -68,4 +69,11 @@ class AvatarController extends Controller
 
     }
 
+    public function getAvatar(){
+        return Avatar::all();
+    }
+    
+    public function getUser($id){
+        return User::find($id);
+    }
 }

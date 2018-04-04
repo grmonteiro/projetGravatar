@@ -9,9 +9,10 @@
         @foreach($avatars as $key => $avatar)
         <div class="card">
             <img class="card-img-top" src="{{ URL::asset($avatar->img) }}" alt="Card image cap">
-            
             <div class="card-body">
-                <h5 class="card-title">{{ $avatar->title }}</h5>
+                <h5 class="card-title">
+                    {{ $avatar->title }}
+                </h5>
                 
                 <p class="card-text">
                   {{ $avatar->email }}
@@ -22,12 +23,12 @@
             <div class="row">
                 <div class="col">
                     <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#edit">
-                      Edit
+                        Edit
                     </button> 
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete">
-                      <img src="{{ asset("/img/garbage.png") }}"></img>
+                    <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delete">
+                        <img src="{{ asset("/img/garbage.png") }}"></img>
                     </button>
                 </div>
             </div>
@@ -95,7 +96,6 @@
             <div class="modal-footer">
                 <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 {!! Form::submit('Save changes', ['class' => 'btn btn-primary btn-success']) !!}                
-                {{-- <button type="submit" class="btn btn-primary btn-success">Save changes</button> --}}
             </div>
             {!! Form::close() !!}
         </div>
