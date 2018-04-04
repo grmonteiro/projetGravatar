@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Avatar;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AvatarController extends Controller
 {
@@ -13,8 +14,7 @@ class AvatarController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -23,36 +23,49 @@ class AvatarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $avatars = Avatar::where('user_id', Auth::id())->get();
         return view('avatars')->with('avatars', $avatars);
     }
 
-    public function deleteAvatar($id)
-    {
-        $avatar = Avatar::findOrFail($id);
-        $avatar->delete();
-        return Redirect::to('avatars');
+    public function delete(Avatar $avatar) {
+        $imgName = explode('/', $avatar->img)[4];
+        $user = Auth::id();
+        $imgPath = '/img/'.$user.'/'.$imgName;
+
+        if (Storage::disk('public')->exists($imgPath)) {
+            Storage::disk('public')->delete($imgPath);
+            $avatar->delete();
+            return redirect()->route('avatars');
+        } else {
+            return var_dump($imgPath);
+        }
     }
 
-    public function store(Request $request)
-    {
-        $imgName = $request->input('title').'.jpg';
-        $imgPath = base_path().'/public/img/'.$imgName;
+    public function store(Request $request) {
         $userId = Auth::id();
+        $img = $request->file('img');
+        $imgName = $request->input('title').'.'.$img->getClientOriginalExtension();
+        $imgPath = '/storage/img/'.$userId.'/'.$imgName;
+        $status = $request->input('status');
 
-        $request->file('img')->move(
-            base_path().'/public/img/'.$userId.'/', $imgName
+        $img->move(
+            base_path().'/public/storage/img/'.$userId.'/', $imgName
         );
 
-        // Avatar::create([
-        //     'user_id' => $userId,
-        //     'email' => $request->get('email'),
-        //     'img' => $imgPath,
-        // ]);
+        Avatar::create([
+            'user_id' => $userId,
+            'title' => $imgName,
+            'email' => $request->get('email'),
+            'status' => $status,
+            'img' => $imgPath
+        ]);
 
         return redirect()->route('avatars', array($imgName))->with('message', 'Image added!');
+    }
+
+    public function edit(Request $req) {
+
     }
 
 }

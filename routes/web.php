@@ -18,7 +18,13 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/user/avatars', 'AvatarController@index')->name('avatars');
+// Route::get('/public/img/{userId}/{img}', function ($userId, $img) {
+    
+// });
+
 Route::post('/user/storeAvatar', 'AvatarController@store')->name('storeAvatar');
+Route::post('/user/editAvatar', 'AvatarController@edit')->name('editAvatar');
+Route::get('/user/deleteAvatar/{avatar}', 'AvatarController@delete')->name('deleteAvatar');
 
 Auth::routes();
 
