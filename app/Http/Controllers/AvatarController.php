@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Avatar;
+use App\User;
 
 class AvatarController extends Controller
 {
@@ -47,4 +49,11 @@ class AvatarController extends Controller
         return Redirect::to('avatars');
     }
 
+    public function getAvatar(){
+        return Avatar::all();
+    }
+    
+    public function getUser($id){
+        return User::find($id);
+    }
 }

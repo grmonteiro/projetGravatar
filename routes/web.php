@@ -21,6 +21,12 @@ Route::get('/user/avatars', function () {
     return view('avatars');
 })->name('avatars');
 
+Route::get('avatar','ApiController@getAvatar');
+
+Route::get('user1/{id}','ApiController@getUser');
+
+Route::get('user1','ApiController@getUsers');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
