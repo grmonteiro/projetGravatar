@@ -18,7 +18,14 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ asset('/img/favicon.png') }}">
+    
+    
+    
+    
 </head>
 <body>
     <div id="app">
