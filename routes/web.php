@@ -17,9 +17,8 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/user/avatars', function () {
-    return view('avatars');
-})->name('avatars');
+Route::get('/user/avatars', 'AvatarController@index')->name('avatars');
+Route::post('/user/storeAvatar', 'AvatarController@store')->name('storeAvatar');
 
 Auth::routes();
 

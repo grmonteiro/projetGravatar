@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Avatar;
+use Illuminate\Support\Facades\Auth;
 
 class AvatarController extends Controller
 {
@@ -21,11 +23,12 @@ class AvatarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function addAvatar()
+    public function index()
     {
-        return view('addAvatar');
+        $avatars = Avatar::where('user_id', Auth::id())->get();
+        return view('avatars')->with('avatars', $avatars);
     }
+
     public function deleteAvatar($id)
     {
         $avatar = Avatar::findOrFail($id);
@@ -33,18 +36,23 @@ class AvatarController extends Controller
         return Redirect::to('avatars');
     }
 
-    public function saveAvatar(Request $request)
+    public function store(Request $request)
     {
-        $file = Input::file('img');
-        $img = Image::make($file);
-        Response::make($img->encode('jpeg'));
+        $imgName = $request->input('title').'.jpg';
+        $imgPath = base_path().'/public/img/'.$imgName;
+        $userId = Auth::id();
 
-        Avatar::create([
-            'user_id' => Auth::id(),
-            'email' => $request->get('email'),
-            'img' => $img,
-        ]);
-        return Redirect::to('avatars');
+        $request->file('img')->move(
+            base_path().'/public/img/'.$userId.'/', $imgName
+        );
+
+        // Avatar::create([
+        //     'user_id' => $userId,
+        //     'email' => $request->get('email'),
+        //     'img' => $imgPath,
+        // ]);
+
+        return redirect()->route('avatars', array($imgName))->with('message', 'Image added!');
     }
 
 }
