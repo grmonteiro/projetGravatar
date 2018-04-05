@@ -26,7 +26,7 @@ Route::post('/user/storeAvatar', 'AvatarController@store')->name('storeAvatar');
 Route::post('/user/editAvatar', 'AvatarController@edit')->name('editAvatar');
 Route::get('/user/deleteAvatar/{avatar}', 'AvatarController@delete')->name('deleteAvatar');
 
-Route::get('avatar','ApiController@getAvatar');
+Route::get('avatar/{email}','ApiController@getAvatar');
 
 Route::get('user1/{id}','ApiController@getUser');
 

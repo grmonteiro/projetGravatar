@@ -15,8 +15,8 @@ class ApiController extends Controller
      */
     public function __construct(){}
     
-    public function getAvatar(){
-        return Avatar::all();
+    public function getAvatar($email){
+        return Avatar::where('email',$email)->first();
     }
     
     public function getUser($id){

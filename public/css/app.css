@@ -34,7 +34,7 @@
 }
 
 .add {
-  position: absolute;
+  position: fixed;
   bottom: 25px;
   right: 25px;
   font-size: 18px;
