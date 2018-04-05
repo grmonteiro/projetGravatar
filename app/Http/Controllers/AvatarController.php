@@ -62,11 +62,7 @@ class AvatarController extends Controller
             'img' => $imgPath
         ]);
 
-        return redirect()->route('avatars', array($imgName))->with('message', 'Image added!');
-    }
-
-    public function edit(Request $req) {
-
+        return redirect()->route('avatars');
     }
 
     public function getAvatar(){
