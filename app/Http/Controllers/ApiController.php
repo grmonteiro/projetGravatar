@@ -18,8 +18,4 @@ class ApiController extends Controller
     public function getAvatar($email){
         return Avatar::where('email',$email)->first();
     }
-    
-    public function getUser($id){
-        return User::find($id);
-    }
 }

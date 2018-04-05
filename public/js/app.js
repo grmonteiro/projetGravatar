@@ -1,17 +1,22 @@
 
-// Thumbnail show on image selection
 $(document).ready(function() {
-    $('#img').on('change', function () {
+    $img = $('#img');
+    
+    $img.attr('accept', 'image/*')
+    $img.css('display', 'none');
+    $img.on('change', function () {
         showImg(this);
     });
 });
 
+// Show thumbnail on image selection
 function showImg(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
             $('#thumb').attr('src', e.target.result);
+            $('#limg').text(input.files[0].name);
         };
         reader.readAsDataURL(input.files[0]);
     }

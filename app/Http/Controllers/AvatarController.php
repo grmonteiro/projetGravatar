@@ -7,6 +7,7 @@ use App\Avatar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use App\Http\Requests\StoreAvatar;
 
 class AvatarController extends Controller
 {
@@ -30,28 +31,27 @@ class AvatarController extends Controller
     }
 
     public function delete(Avatar $avatar) {
-        $imgName = explode('/', $avatar->img)[4];
-        $user = Auth::id();
-        $imgPath = '/img/'.$user.'/'.$imgName;
-
-        if (Storage::disk('public')->exists($imgPath)) {
-            Storage::disk('public')->delete($imgPath);
-            $avatar->delete();
+        
+        if (Avatar::deleteAvatar($avatar)) {
             return redirect()->route('avatars');
         } else {
-            return var_dump($imgPath);
+            return 'Deletion failed!';
         }
     }
+    
+    public function addAvatar() {
+        return view('addAvatar');
+    }
 
-    public function store(Request $request) {
+    public function store(StoreAvatar $request) {
         $userId = Auth::id();
         $img = $request->file('img');
         $imgName = $request->input('title').'.'.$img->getClientOriginalExtension();
         $imgPath = '/storage/img/'.$userId.'/'.$imgName;
         $status = $request->input('status');
-
+        
         $img->move(
-            base_path().'/public/storage/img/'.$userId.'/', $imgName
+            Avatar::getStoragePath(), $imgName
         );
 
         Avatar::create([
@@ -63,13 +63,5 @@ class AvatarController extends Controller
         ]);
 
         return redirect()->route('avatars');
-    }
-
-    public function getAvatar(){
-        return Avatar::all();
-    }
-    
-    public function getUser($id){
-        return User::find($id);
     }
 }

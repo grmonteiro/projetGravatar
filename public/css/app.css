@@ -8,10 +8,14 @@
  
   /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .card {
+  .card-deck > .card {
     max-width: 30%;
   }
  }
+ 
+nav.navbar {
+  z-index: 10;
+}
 
 .placeholder {
   display: flex;
@@ -41,6 +45,13 @@
 
 .capitalize {
   text-transform: capitalize;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.spaced {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
 .suppression {
