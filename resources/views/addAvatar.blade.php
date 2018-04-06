@@ -5,7 +5,7 @@
     
     <h1 class="text-center uppercase spaced">Add new avatar</h1>
     
-    {!! Form::open(['route' => 'storeAvatar', 'files' => true, 'id' => 'storeAvatarForm']) !!}
+    {!! Form::open(['route' => 'storeAvatar', 'files' => true, 'id' => 'storeAvatarForm', 'class' => 'needs-validation', 'novalidate']) !!}
     <div class="modal-body">
         <div class="row">
             <div class="col-4">
@@ -13,34 +13,31 @@
                 <div class="custom-file">
                     {!! Form::label('img', 'Choose your avatar', ['class' => 'custom-file-label', 'for' => 'img', 'id' => 'limg']) !!}
                     {!! Form::file('img', null, array('class' => 'custom-file-input')) !!}
+                    <div class="invalid-feedback">
+                        You haven't selected an image
+                    </div>
                 </div>
-                @if ($errors->has('img'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('img') }}</strong>
-                </span>
-                @endif
+                
             </div>
             <div class="col-8">
                         
                 <div class="form-group">
                     {!! Form::label('title','Title') !!}
-                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
+                    <div class="invalid-feedback">
+                        No title given
+                    </div>
                 </div>
-                @if ($errors->has('title'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('title') }}</strong>
-                </span>
-                @endif
+                
 
                 <div class="form-group">
                     {!! Form::label('email','Email') !!}
-                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
+                    <div class="invalid-feedback">
+                        No email address given
+                    </div>
                 </div>
-                @if ($errors->has('email'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-                @endif
+                
 
                 {!! Form::label('thestatus', 'Status :') !!}
                 <div id="thestatus">
