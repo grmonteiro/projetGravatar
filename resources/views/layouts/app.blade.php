@@ -81,3 +81,9 @@
     </div>
 </body>
 </html>
+
+<style type="text/css">
+    .form-group .invalid-feedback{
+        display: block;
+    }
+</style>

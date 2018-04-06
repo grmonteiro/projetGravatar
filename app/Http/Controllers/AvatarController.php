@@ -35,7 +35,7 @@ class AvatarController extends Controller
         if (Avatar::deleteAvatar($avatar)) {
             return redirect()->route('avatars');
         } else {
-            return 'Deletion failed!';
+            return redirect()->route('avatars')->withErrors(['errorMsg', 'The avatar could not be deleted']);;
         }
     }
     
@@ -49,6 +49,7 @@ class AvatarController extends Controller
         $imgName = $request->input('title').'.'.$img->getClientOriginalExtension();
         $imgPath = '/storage/img/'.$userId.'/'.$imgName;
         $status = $request->input('status');
+        $validator = $request->all();
         
         $img->move(
             Avatar::getStoragePath(), $imgName

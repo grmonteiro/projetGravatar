@@ -13,10 +13,15 @@
                 <div class="custom-file">
                     {!! Form::label('img', 'Choose your avatar', ['class' => 'custom-file-label', 'for' => 'img', 'id' => 'limg']) !!}
                     {!! Form::file('img', null, array('class' => 'custom-file-input')) !!}
-                    <div class="invalid-feedback">
-                        You haven't selected an image
-                    </div>
                 </div>
+                
+                @if ($errors->has('img'))
+                    <div class="form-group">
+                        <div class="invalid-feedback">
+                            {{$errors->first('img')}}
+                        </div>
+                    </div>
+                @endif
                 
             </div>
             <div class="col-8">
@@ -24,18 +29,22 @@
                 <div class="form-group">
                     {!! Form::label('title','Title') !!}
                     {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
-                    <div class="invalid-feedback">
-                        No title given
-                    </div>
+                    @if ($errors->has('title'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('title')}}
+                        </div>
+                    @endif
                 </div>
                 
 
                 <div class="form-group">
                     {!! Form::label('email','Email') !!}
                     {!! Form::email('email', null, ['class' => 'form-control', 'required']) !!}
-                    <div class="invalid-feedback">
-                        No email address given
-                    </div>
+                    @if ($errors->has('email'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('email')}}
+                        </div>
+                    @endif
                 </div>
                 
 
